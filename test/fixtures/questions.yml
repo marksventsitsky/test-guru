@@ -2,8 +2,8 @@
 
 one:
   body: MyString
-  test_id: 1
+  test_id: 
 
 two:
   body: MyString
-  test_id: 1
+  test_id: 
