@@ -37,10 +37,10 @@ Question.create([
 question_html = Question.find_by(body: 'С помощью какого тега нужно задавать подписи к полям формы?')
 
 Answer.create([
-    { body: 'id', question_id: question_html, correct: 0 },
-    { body: 'type', question_id: question_html, correct: 0 },
-    { body: 'label', question_id: question_html, correct: 1 },
-    { body: 'field', question_id: question_html, correct: 0 }
+    { body: 'id', question_id: question_html, correct: false },
+    { body: 'type', question_id: question_html, correct: false },
+    { body: 'label', question_id: question_html, correct: true },
+    { body: 'field', question_id: question_html, correct: false }
                 ])
 
 User.create([
