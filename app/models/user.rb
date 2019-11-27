@@ -1,5 +1,7 @@
 class User < ApplicationRecord
 
+  has_many :passing_tests
+
 
   def test_list(level)
     Test.joins('JOIN passing_tests ON tests.id = passing_tests.test_id')
