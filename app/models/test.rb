@@ -2,10 +2,10 @@ class Test < ApplicationRecord
 
 
   belongs_to :category
-  belongs_to :answer
 
   has_many :questions
-  has_many :passing_tests
+  has_and_belongs_to_many :users
+
 
 
   def self.test_titles (category)
