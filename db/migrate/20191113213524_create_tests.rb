@@ -6,6 +6,8 @@ class CreateTests < ActiveRecord::Migration[6.0]
       t.references :category, index: true
 
       t.timestamps
+
+      add_index :tests, %i[title level], unique: true
     end
   end
 end
