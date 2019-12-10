@@ -4,5 +4,10 @@ class User < ApplicationRecord
 
   validates :name, presence: true
 
-  scope :test_list, -> (level) { where(level: level)}
+  def test_list(level)
+    tests.test_level(level)
+  end
+
+  scope :test_level, ->(level) { where(level: level) }
+
 end
