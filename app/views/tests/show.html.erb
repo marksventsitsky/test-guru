@@ -1,0 +1,11 @@
+<h1><%= @test.title %></h1>
+<span>Level: <%= @test.level %></span>
+<ul>
+  <% @test.questions.each do |a| %>
+    <li><%= a.body %>
+      <%= link_to 'Удалить вопрос', [a],
+                  method: :delete,
+                  data: { confirm: 'Удалить?' } %>
+    </li>
+  <% end %>
+</ul>

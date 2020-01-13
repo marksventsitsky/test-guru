@@ -1,0 +1,10 @@
+<h1>New Question</h1>
+
+<form action="/tests/<%= @test.id %>/questions" method="post">
+  <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+  <p>
+    <label for="question-body">Новый вопрос:</label>
+    <input type="text" id="question-body" name="question[body]">
+  </p>
+  <input type="submit" value="Добавить">
+</form>
