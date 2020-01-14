@@ -9,8 +9,7 @@ class TestsController < ApplicationController
   def show
   end
 
-  def create
-  end
+
 
   private
 

@@ -17,9 +17,19 @@ class QuestionsController < ApplicationController
   end
 
   def create
-    question = @test.questions.create(question_params)
-    redirect_to test_questions_url
+    question = @test.questions.new(question_params)
+    if question.save
+
+      redirect_to test_questions_url
+
+    else
+      flash[:notice] = 'Поле не может быть пустым!'
+      redirect_to :action => 'new'
+
+    end
+
   end
+
 
   def destroy
     @question.destroy
