@@ -1,31 +1,41 @@
 class QuestionsController < ApplicationController
 
-  before_action :define_question, only: [:show, :destroy]
+  before_action :define_question, only: [:show, :destroy, :update, :edit]
   before_action :define_test, only: [:index, :new, :create]
 
   rescue_from ActiveRecord::RecordNotFound,
               with: :rescue_with_question_not_found
 
   def index
-    render json: { questions: @test.questions }
+    redirect_to @test
   end
 
   def show
   end
 
   def new
+    @question = @test.questions.new
+  end
+
+  def edit
   end
 
   def create
-    question = @test.questions.new(question_params)
-    if question.save
-
-      redirect_to test_questions_url
-
+    @question = @test.questions.new(question_params)
+    if @question.save
+      redirect_to @test
     else
-      flash[:notice] = 'Поле не может быть пустым!'
-      redirect_to :action => 'new'
+      puts @question.errors.full_messages
+      render :new
+    end
+  end
 
+  def update
+    if @question.update(question_params)
+      redirect_to @question
+    else
+      puts @question.errors.full_messages
+      render :edit
     end
 
   end
@@ -33,7 +43,7 @@ class QuestionsController < ApplicationController
 
   def destroy
     @question.destroy
-    render plain: 'Вопрос удален'
+    redirect_back(fallback_location: tests_path)
   end
 
   private

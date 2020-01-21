@@ -1,0 +1,16 @@
+<div class="test-head"><h1>Test Guru</h1>
+<nav><p>
+  <%= link_to 'New test', new_test_path %>
+</p>
+</nav></div>
+<div class="table-container" role="table" aria-label="Destinations">
+  <div class="flex-table header" role="rowgroup">
+    <div class="flex-row first" role="columnheader">Test name</div>
+    <div class="flex-row" role="columnheader">Level</div>
+    <div class="flex-row" role="columnheader">Show</div>
+    <div class="flex-row" role="columnheader">Edit</div>
+    <div class="flex-row" role="columnheader">delete</div>
+    <div class="flex-row" role="columnheader">Questions</div>
+  </div>
+  <%= render @tests %>
+</div>
