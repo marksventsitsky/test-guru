@@ -1,6 +1,6 @@
 class TestsController < ApplicationController
 
-  before_action :define_test, only: [:show, :update]
+  before_action :define_test, only: [:show, :update, :edit]
 
   def index
     @tests = Test.all
@@ -14,7 +14,6 @@ class TestsController < ApplicationController
   end
 
   def edit
-    @test = Test.find(params[:id])
   end
 
   def create
