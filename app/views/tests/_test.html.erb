@@ -1,0 +1,11 @@
+<div class="flex-table row" role="rowgroup">
+  <div class="flex-row" role="cell"><%= test.title %></div>
+  <div class="flex-row" role="cell"><%= test_level(test) %></div>
+  <div class="flex-row" role="cell"><%= link_to 'Show', test_path(test) %></div>
+  <div class="flex-row" role="cell"><%= link_to 'Edit', edit_test_path(test) %></div>
+  <div class="flex-row" role="cell"><%= link_to 'Delete',
+                    test_path(test),
+                    method: :delete,
+                    data: { confirm: 'Are you sure?' } %></div>
+  <div class="flex-row" role="cell'"><%= test.questions.count %></div>
+  </div>

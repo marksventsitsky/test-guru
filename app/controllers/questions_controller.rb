@@ -7,25 +7,38 @@ class QuestionsController < ApplicationController
               with: :rescue_with_question_not_found
 
   def index
-    render json: { questions: @test.questions }
+    redirect_to @test
   end
 
   def show
   end
 
   def new
+    @question = @test.questions.new
+  end
+
+  def edit
+    @question = Question.find(params[:id])
   end
 
   def create
-    question = @test.questions.new(question_params)
-    if question.save
-
-      redirect_to test_questions_url
-
+    @question = @test.questions.new(question_params)
+    if @question.save
+      redirect_to @test
     else
-      flash[:notice] = 'Поле не может быть пустым!'
-      redirect_to :action => 'new'
+      puts @question.errors.full_messages
+      render :new
+    end
+  end
 
+  def update
+    @question = Question.find(params[:id])
+
+    if @question.update(question_params)
+      redirect_to @question
+    else
+      puts @question.errors.full_messages
+      render :edit
     end
 
   end
@@ -33,7 +46,7 @@ class QuestionsController < ApplicationController
 
   def destroy
     @question.destroy
-    render plain: 'Вопрос удален'
+    redirect_back(fallback_location: tests_path)
   end
 
   private

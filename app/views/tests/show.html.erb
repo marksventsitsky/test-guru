@@ -1,11 +1,28 @@
-<h1><%= @test.title %></h1>
-<span>Level: <%= @test.level %></span>
+<div class="test-head">
+  <h1><%= @test.title %></h1>
+  <nav>
+    <span>
+      <%= link_to 'Edit', edit_test_path(@test) %>
+    </span>
+      <span>
+      <%= link_to 'Back', tests_path %>
+    </span>
+    <span>
+      <%= link_to 'Add question', new_test_question_path(@test) %>
+    </span>
+  </nav>
+
+  <div>Level: <%= @test.level %></div>
+</div>
+
 <ul>
   <% @test.questions.each do |a| %>
     <li><%= a.body %>
-      <%= link_to 'Удалить вопрос', [a],
+      <%= link_to 'Edit question', edit_question_path(a) %>
+      <%= link_to 'Delete question', [a],
                   method: :delete,
-                  data: { confirm: 'Удалить?' } %>
+                  data: { confirm: 'Delete?' } %>
     </li>
   <% end %>
 </ul>
+
